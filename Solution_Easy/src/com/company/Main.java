@@ -5,7 +5,7 @@ public class Main {
     /**
      * Definition for singly-linked list.
      * */
-    public static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
         ListNode(int x) {
@@ -14,7 +14,7 @@ public class Main {
         }
     }
 
-    public static int getLen (ListNode head) {
+    private static int getLen (ListNode head) {
         int count = 1;
         while(head.next != null ) {
             head = head.next;
@@ -24,7 +24,7 @@ public class Main {
     }
 
     // 1. two sum
-    public static int[] twoSum(int[] nums, int target) {
+    private static int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
         result[0] = 0;
         result[1] = 0;
@@ -45,7 +45,7 @@ public class Main {
     }
 
     // E19. Remove Nth Node From End of List
-    public static ListNode removeNthFromEnd(ListNode head, int n) {
+    private static ListNode removeNthFromEnd(ListNode head, int n) {
         if(head == null || head.next == null)
             return null;
 
@@ -69,7 +69,7 @@ public class Main {
         return head;
     }
     // 26. Remove Duplicates from Sorted Array
-    public static int removeDuplicates(int[] nums) {
+    private static int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0)
             return 0;
         int i = 0;
@@ -87,7 +87,7 @@ public class Main {
     }
 
     // 27. Remove Element
-    public static int removeElement(int[] nums, int val) {
+    private static int removeElement(int[] nums, int val) {
 
         int j = 0;
         int k = 0;
@@ -103,7 +103,7 @@ public class Main {
     }
 
     // 83. Remove Duplicates from Sorted List
-    public static ListNode deleteDuplicates(ListNode head) {
+    private static ListNode deleteDuplicates(ListNode head) {
         if(head == null)
             return null;
         ListNode myhead = new ListNode(head.val);
@@ -125,7 +125,7 @@ public class Main {
     }
 
     // E160. Intersection of Two Linked Lists
-    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    private static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) {
             return null;
         } else {
@@ -170,26 +170,27 @@ public class Main {
 
 
     //E169. Majority Element
-    public static int majorityElement(int[] nums) {
+    private static int majorityElement(int[] nums) {
         int major = 0;
         Arrays.sort(nums);
         return nums[nums.length/2];
     }
 
     // E190. Reverse Bits
-    public static int reverseBits(int n) {
+    private static int reverseBits(int n) {
         System.out.println(Integer.reverse(n));
         return Integer.reverse(n);
     }
 
     //E191. Number of 1 Bits
-    public static int hammingWeight (int n){
+    private static int hammingWeight (int n){
         System.out.println(Integer.bitCount(n));
         return Integer.bitCount(n);
     }
 
+
     //203. Remove Linked List Elements
-    public static ListNode removeElements(ListNode head, int val) {
+    private static ListNode removeElements(ListNode head, int val) {
         if(head == null )
             return null;
 
@@ -207,7 +208,7 @@ public class Main {
     }
 
     // E231,E326,E342. power of two, three or four
-    public static boolean isPowerOfThree(int n) {
+    private static boolean isPowerOfThree(int n) {
         System.out.println(Math.log(n) + " " + Math.log10(n));
         System.out.println(Math.log(3) + " " + Math.log10(3));
         System.out.println(Math.log(n)/Math.log(3) + " " + Math.log10(n)/Math.log10(3));
@@ -216,18 +217,18 @@ public class Main {
     }
 
     // 237. Delete node in a linked list
-    public static void deleteNode(ListNode node) {
+    private static void deleteNode(ListNode node) {
         node.val = node.next.val;
         node.next = node.next.next;
     }
 
     // E344. Reverse String
-    public static String reverseString(String s) {
+    private static String reverseString(String s) {
         return new StringBuilder(s).reverse().toString();
     }
 
     // 349. Intersection of Two Arrays
-    public static int[] intersection(int[] nums1, int[] nums2) {
+    private static int[] intersection(int[] nums1, int[] nums2) {
         Set<Integer> mySet = new HashSet<Integer>();
         List<Integer> intersect = new ArrayList<Integer>();
 
@@ -251,7 +252,7 @@ public class Main {
 
     }
     // 350. Intersection of Two Arrays II
-    public static int[] intersect(int[] nums1, int[] nums2) {
+    private static int[] intersect(int[] nums1, int[] nums2) {
 
         List<Integer> myList = new ArrayList<Integer>();
         List<Integer> intersect = new ArrayList<Integer>();
