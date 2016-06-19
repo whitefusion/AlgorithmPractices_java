@@ -24,7 +24,7 @@ public class Main {
         int[] nums2 = {100};
         int[] nums3 = {99,100};
         int[] nums4 = {1,99,99};
-        int[] nums5 = {100,50,50,100};
+        int[] nums5 = {100,50,99,100};
 
         assert rob(nums1) == 0 : "Case 1 fails";
         assert rob(nums2) == 100 : "Case 2 fails";
