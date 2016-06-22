@@ -14,6 +14,16 @@ public class Main {
         }
     }
 
+    /**
+     * definition for a binary tree node.
+     */
+    private static class TreeNode {
+             int val;
+             TreeNode left;
+             TreeNode right;
+             TreeNode(int x) { val = x; }
+    }
+
     private static int getLen (ListNode head) {
         int count = 1;
         while(head.next != null ) {
@@ -216,6 +226,30 @@ public class Main {
         return Math.log10(n)/Math.log10(3) % 1 == 0;
     }
 
+    // 235. Lowest Common ancestor of a Binary Search Tree
+    //Given a binary search tree (BST),
+    // find the lowest common ancestor (LCA) of two given nodes in the BST.
+
+    private static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root.left == null && root.right == null)
+            return root;
+        int big = p.val >= q.val ? p.val:q.val;
+        int small = p.val >= q.val ? q.val: p.val;
+        return helper_235(root,big,small);
+    }
+
+    private static TreeNode helper_235(TreeNode curr, int big, int small) {
+        while(curr.left != null || curr.right != null){
+            if(curr.val >= small && curr.val <= big )
+                return curr;
+            else if(curr.val < small)
+                return helper_235(curr.right,big,small);
+            else
+                return helper_235(curr.left,big,small);
+        }
+        return null;
+    }
+
     // 237. Delete node in a linked list
     private static void deleteNode(ListNode node) {
         node.val = node.next.val;
@@ -355,6 +389,28 @@ public class Main {
         //231,326,342. power of two, three or four
         isPowerOfThree((int)Math.pow((double)3,5));
 
+        // 235. Lowest common ancestor
+        TreeNode tn0 = new TreeNode(0);
+        TreeNode tn2 = new TreeNode(2);
+        TreeNode tn3 = new TreeNode(3);
+        TreeNode tn4 = new TreeNode(4);
+        TreeNode tn5 = new TreeNode(5);
+        TreeNode tn6 = new TreeNode(6);
+        TreeNode tn7 = new TreeNode(7);
+        TreeNode tn8 = new TreeNode(8);
+        TreeNode tn9 = new TreeNode(9);
+/*        tn6.right = tn8;
+        tn6.left = tn2;
+        tn2.right = tn4;
+        tn2.left = tn0;
+        tn4.right = tn5;
+        tn4.left = tn3;
+        tn8.right = tn9;
+        tn8.left = tn7;*/
+        tn2.left = tn0;
+        System.out.println("YYY");
+        System.out.println(lowestCommonAncestor(tn2,tn0,tn2).val);
+        System.out.println("YYY");
         // 344. Reverse String
         String myS = "what the fuck !";
         System.out.println(reverseString(myS));
