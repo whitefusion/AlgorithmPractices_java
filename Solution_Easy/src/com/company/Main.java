@@ -34,6 +34,7 @@ public class Main {
     }
 
     // 1. two sum
+/*    *//* two loops, O(N^2) *//*
     private static int[] twoSum(int[] nums, int target) {
         int[] result = new int[2];
         result[0] = 0;
@@ -52,8 +53,61 @@ public class Main {
                 break;
         }
         return result;
+    }*/
+
+    private static int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i = 0; i < nums.length;i++) {
+            if( map.containsKey(target - nums[i])) {
+                result[0] = map.get(target-nums[i]);
+                result[1] = i;
+                break;
+            } else {
+                map.put(nums[i],i);
+            }
+        }
+        return result;
     }
 
+    // 7 . reverse integer
+/*    private static int reverse(int x) {
+        if(x == 0)
+            return x;
+        int result = 0;
+        while(x!=0){
+            result = result*10+x%10;
+            x=x/10;
+        }
+        return result;
+
+    }*/
+    private static int reverse(int x) {
+        String str = Integer.toString(x);
+        int sign = 1;
+        if (str.charAt(0) == '-') {
+            sign = -1;
+            str = str.substring(1, str.length());
+        }
+        Integer result = new Integer(0);
+        try {
+            result = Integer.parseInt(new StringBuilder(str).reverse().toString());
+        } catch(NumberFormatException ex) {
+            return 0;
+        }
+        return sign * result.intValue();
+    }
+/*    private static int reverse(int x) {
+        int result = 0;
+        int left = 0;
+        while(x!=0){
+            left = x%10;
+            result = result*10+left;
+            x=x/10;
+
+        }
+        return result;
+    }*/
     // E19. Remove Nth Node From End of List
     private static ListNode removeNthFromEnd(ListNode head, int n) {
         if(head == null || head.next == null)
@@ -256,6 +310,50 @@ public class Main {
         node.next = node.next.next;
     }
 
+    // 266. palindrome permutation
+/*    private static boolean canPermutePalindrome(String s) {
+        boolean result = true;
+        if(s.length() <=1) return result;
+        Map<Character,Integer> hist = new HashMap<Character,Integer>();
+        for(int i = 0;i < s.length();i++){
+            Character L = new Character(s.charAt(i));
+            if(hist.containsKey(L)) {
+                hist.put(L,hist.get(L)+1);
+            }
+            else
+                hist.put(L,1);
+        }
+        int count = 0;
+        for(Character l: hist.keySet()){
+            if(s.length()%2 == 0){
+                if(hist.get(l) %2 == 1)
+                    return false;
+            }
+            else if(s.length()%2 == 1){
+                if(hist.get(l) %2 == 1) {
+                    count++;
+                    if (count > 1)
+                        return false;
+                }
+            }
+        }
+        return result;
+    }*/
+
+    private static boolean canPermutePalindrome(String s) {
+        if (s.length() <= 1)
+            return true;
+        int[] counter = new int[128];
+        int odd = 0;
+        for(int i = 0; i < s.length();i++){
+            if ((++counter[s.charAt(i)] & 1) == 1)
+                odd++;
+            else
+                odd--;
+        }
+        return odd<=1;
+    }
+
     // E344. Reverse String
     private static String reverseString(String s) {
         return new StringBuilder(s).reverse().toString();
@@ -321,6 +419,12 @@ public class Main {
         for(int i = 0; i < result1.length;i++)
             System.out.println(result1[i]);
         System.out.println("SSS");
+
+        // 7. reverse integer
+        System.out.println("IIII");
+        System.out.println(reverse(-123));
+        System.out.println(reverse(1534236469));
+        System.out.println("IIII");
         // 19. Remove Nth Node From End of List
         /* test getLen */
         ListNode A  = new ListNode(1);
@@ -411,6 +515,30 @@ public class Main {
         System.out.println("YYY");
         System.out.println(lowestCommonAncestor(tn2,tn0,tn2).val);
         System.out.println("YYY");
+
+        // 266. palindrome permutation
+        String s0 = "";
+        String s1 = "A";
+        String s2 = "ab";
+        String s3 = "baa";
+        String s4 = "noon";
+        String s5 = "kayak";
+        String s6 = "baby";
+        String s7 = "water";
+        String s8 = "Noon";
+
+        System.out.println("WWW");
+        System.out.println(canPermutePalindrome(s0));
+        System.out.println(canPermutePalindrome(s1));
+        System.out.println(canPermutePalindrome(s2));
+        System.out.println(canPermutePalindrome(s3));
+        System.out.println(canPermutePalindrome(s4));
+        System.out.println(canPermutePalindrome(s5));
+        System.out.println(canPermutePalindrome(s6));
+        System.out.println(canPermutePalindrome(s7));
+        System.out.println(canPermutePalindrome(s8));
+        System.out.println("WWW");
+
         // 344. Reverse String
         String myS = "what the fuck !";
         System.out.println(reverseString(myS));
